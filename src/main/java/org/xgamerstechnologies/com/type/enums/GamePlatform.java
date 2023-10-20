@@ -1,6 +1,6 @@
 package org.xgamerstechnologies.com.type.enums;
 
-public enum PlatformType {
+public enum GamePlatform {
     PERSONAL_COMPUTER,
     PS2,
     PS3,
