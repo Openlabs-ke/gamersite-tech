@@ -13,8 +13,8 @@ import javax.persistence.*;
 @ToString
 @Builder
 @Entity
-@Table(name = "xbox_games")
-public class XBoxGame extends Game {
+@Table(name = "computer_games")
+public class ComputerGame extends Game {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "game_platform")
     private GamePlatform gamePlatform;
