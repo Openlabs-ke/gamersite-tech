@@ -12,7 +12,6 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@Builder
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,5 +34,5 @@ public class Game {
     private String gameDescription;
 
     @Column(name = "num_in_stock", nullable = false)
-    private Long numInStock;
+    private Integer numInStock;
 }
