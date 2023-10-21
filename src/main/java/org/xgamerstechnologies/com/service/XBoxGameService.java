@@ -8,15 +8,15 @@ import org.xgamerstechnologies.com.abstractions.GameUpdation;
 import org.xgamerstechnologies.com.entity.XBoxGame;
 
 @Service
-public class XBoxGameService implements GameInsertion, GameRetrieval<XBoxGame>, GameUpdation, GameDeletion {
+public class XBoxGameService implements GameInsertion<XBoxGame>, GameRetrieval<XBoxGame>, GameUpdation, GameDeletion {
     @Override
     public void deleteGame() {
 
     }
 
     @Override
-    public void insertGame() {
-
+    public XBoxGame insertGame(XBoxGame xboxGame) {
+        return null;
     }
 
     @Override
