@@ -1,10 +1,10 @@
 package org.xgamerstechnologies.com.type;
 
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.Size;
+import java.util.Date;
 
 @MappedSuperclass
 @NoArgsConstructor
@@ -28,7 +28,7 @@ public class Game {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "date_released")
-    private LocalDate dateReleased;
+    private Date dateReleased;
 
     @Column(name = "game_description", nullable = false)
     @Basic
