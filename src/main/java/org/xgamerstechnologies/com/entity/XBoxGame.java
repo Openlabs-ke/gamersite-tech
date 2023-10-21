@@ -14,7 +14,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
-@Builder
 @Entity
 @Table(name = "xbox_games")
 public class XBoxGame extends Game implements Serializable {

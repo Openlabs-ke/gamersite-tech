@@ -13,8 +13,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
-@Builder
 @Entity
 @Table(name = "playstation_games")
 public class PlaystationGame extends Game implements Serializable {

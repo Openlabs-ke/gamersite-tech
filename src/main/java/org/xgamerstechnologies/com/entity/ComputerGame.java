@@ -14,7 +14,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
-@Builder
 @Entity
 @Table(name = "computer_games")
 public class ComputerGame extends Game implements Serializable {
