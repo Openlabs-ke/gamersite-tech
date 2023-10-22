@@ -10,5 +10,5 @@ public interface BaseGameController<T> {
     ResponseEntity<?> getGame(Long gameId);
     ResponseEntity<?> updateGame(GamePayload gamePayload, Long gameId);
     ResponseEntity<?> deleteGame(Long gameId);
-    ResponseEntity<List<T>> getGameList(String page, String size);
+    ResponseEntity<?> getGameList(String page, String size);
 }
