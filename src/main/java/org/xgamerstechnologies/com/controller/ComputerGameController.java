@@ -14,6 +14,7 @@ import org.xgamerstechnologies.com.payload.GamePayload;
 import org.xgamerstechnologies.com.service.ComputerGameService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @Slf4j
@@ -82,7 +83,14 @@ public class ComputerGameController extends ModelConversions<ComputerGame> imple
     @Override
     @ResponseStatus(code = HttpStatus.OK)
     @GetMapping(value = "/get-list", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<ComputerGame>> getGameList(String page, String size) {
-        return null;
+    public ResponseEntity<List<GamePayload>> getGameList(
+            @RequestParam(defaultValue = "0") String page,
+            @RequestParam(required = false, defaultValue = "10") String size) {
+        int pageNumber = Integer.parseInt(page);
+        int pageSize = Integer.parseInt(size);
+
+        List<ComputerGame> computerGames = computerGameService.getPagedList(pageNumber, pageSize);
+        List<GamePayload> retrievedComputerGames = computerGames.stream().map(super::convertToPayload).toList();
+        return ResponseEntity.ok().body(retrievedComputerGames);
     }
 }
