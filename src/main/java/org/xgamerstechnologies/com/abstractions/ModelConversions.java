@@ -12,7 +12,7 @@ public abstract class ModelConversions<T extends Game> {
     public GamePayload convertToPayload(Game game) {
         GamePayload gamePayload = modelMapper.map(game, GamePayload.class);
         gamePayload.setReleaseDate(new GamePayload().getReleaseDateAsString(game.getDateReleased()));
-        
+
         return gamePayload;
     }
     public T convertToEntity(GamePayload gamePayload, Class<T> clazz) {
