@@ -1,5 +1,7 @@
 package org.xgamerstechnologies.com.abstractions;
 
-public interface GameUpdation {
-    void updateGame();
+import org.xgamerstechnologies.com.type.Game;
+
+public interface GameUpdation<T> {
+    T updateGame(T game);
 }

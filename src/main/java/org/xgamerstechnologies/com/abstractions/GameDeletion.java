@@ -1,5 +1,5 @@
 package org.xgamerstechnologies.com.abstractions;
 
 public interface GameDeletion {
-    void deleteGame();
+    void deleteGame(Long id);
 }
