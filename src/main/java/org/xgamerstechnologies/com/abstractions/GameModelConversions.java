@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.xgamerstechnologies.com.payload.GamePayload;
 import org.xgamerstechnologies.com.type.Game;
 
-public abstract class ModelConversions<T extends Game> {
+public abstract class GameModelConversions<T extends Game> {
     @Autowired
     private ModelMapper modelMapper;
 
