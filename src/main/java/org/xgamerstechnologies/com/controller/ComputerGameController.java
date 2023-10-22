@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.xgamerstechnologies.com.abstractions.BaseGameController;
 import org.xgamerstechnologies.com.abstractions.ModelConversions;
 import org.xgamerstechnologies.com.entity.ComputerGame;
@@ -38,8 +39,21 @@ public class ComputerGameController extends ModelConversions<ComputerGame> imple
     @Override
     @ResponseStatus(code  = HttpStatus.OK)
     @GetMapping(value = "/get/{gameId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ComputerGame> getGame(@PathVariable Long gameId) {
-        return null;
+    public ResponseEntity<GamePayload> getGame(@PathVariable Long gameId) {
+        ComputerGame computerGame = computerGameService.retrieveGame(gameId);
+
+        if(computerGame == null) {
+            /*
+             this is a new way of handling REST exceptions that does not need you to generate custom
+             REST advisors. It can handle many types of errors.
+             However, we still advice that you use REST advisor INTERNAL_SERVER_ERROR for global exception-handling,
+             and other REST advisors for handling security-based exceptions thrown by @PreAuthorize, @PostAuthorize and @Secure
+             */
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Game not found");
+        }
+
+        GamePayload computerGamePayload = super.convertToPayload(computerGame);
+        return ResponseEntity.ok().body(computerGamePayload);
     }
 
     @Override
