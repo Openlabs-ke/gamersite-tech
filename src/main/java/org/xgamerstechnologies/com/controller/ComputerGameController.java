@@ -7,19 +7,18 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import org.xgamerstechnologies.com.abstractions.BaseGameController;
-import org.xgamerstechnologies.com.abstractions.ModelConversions;
+import org.xgamerstechnologies.com.abstractions.game.BaseGameController;
+import org.xgamerstechnologies.com.abstractions.game.GameModelConversions;
 import org.xgamerstechnologies.com.entity.ComputerGame;
 import org.xgamerstechnologies.com.payload.GamePayload;
 import org.xgamerstechnologies.com.service.ComputerGameService;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @Slf4j
 @RequestMapping(value = "/api/v1/computer-game")
-public class ComputerGameController extends ModelConversions<ComputerGame> implements BaseGameController<ComputerGame> {
+public class ComputerGameController extends GameModelConversions<ComputerGame> implements BaseGameController<ComputerGame> {
 
     @Autowired
     private ComputerGameService computerGameService;

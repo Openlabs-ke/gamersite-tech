@@ -1,4 +1,4 @@
-package org.xgamerstechnologies.com.abstractions;
+package org.xgamerstechnologies.com.abstractions.game;
 
 import org.xgamerstechnologies.com.type.Game;
 

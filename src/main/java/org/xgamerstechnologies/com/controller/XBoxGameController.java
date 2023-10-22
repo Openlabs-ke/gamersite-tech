@@ -7,8 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import org.xgamerstechnologies.com.abstractions.BaseGameController;
-import org.xgamerstechnologies.com.abstractions.ModelConversions;
+import org.xgamerstechnologies.com.abstractions.game.BaseGameController;
+import org.xgamerstechnologies.com.abstractions.game.GameModelConversions;
 import org.xgamerstechnologies.com.entity.XBoxGame;
 import org.xgamerstechnologies.com.payload.GamePayload;
 import org.xgamerstechnologies.com.service.XBoxGameService;
@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 @Slf4j
 @RequestMapping(value = "/api/v1/xbox-game")
-public class XBoxGameController extends ModelConversions<XBoxGame> implements BaseGameController<XBoxGame> {
+public class XBoxGameController extends GameModelConversions<XBoxGame> implements BaseGameController<XBoxGame> {
 
     @Autowired
     private XBoxGameService xBoxGameService;

@@ -1,4 +1,4 @@
-package org.xgamerstechnologies.com.abstractions;
+package org.xgamerstechnologies.com.abstractions.game;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.xgamerstechnologies.com.entity.ComputerGame;
