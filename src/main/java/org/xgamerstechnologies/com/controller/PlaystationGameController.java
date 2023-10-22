@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.xgamerstechnologies.com.abstractions.BaseGameController;
-import org.xgamerstechnologies.com.abstractions.ModelConversions;
+import org.xgamerstechnologies.com.abstractions.GameModelConversions;
 import org.xgamerstechnologies.com.entity.PlaystationGame;
 import org.xgamerstechnologies.com.payload.GamePayload;
 import org.xgamerstechnologies.com.service.PlaystationGameService;
@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 @Slf4j
 @RequestMapping(value = "/api/v1/playstation-game")
-public class PlaystationGameController extends ModelConversions<PlaystationGame> implements BaseGameController<PlaystationGame> {
+public class PlaystationGameController extends GameModelConversions<PlaystationGame> implements BaseGameController<PlaystationGame> {
 
     @Autowired
     private PlaystationGameService playstationGameService;
