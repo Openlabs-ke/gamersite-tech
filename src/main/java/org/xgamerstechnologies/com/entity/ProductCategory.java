@@ -21,6 +21,6 @@ public class ProductCategory extends Item implements Serializable {
     @Transient
     private static final long serialVersionUID = UUID.randomUUID().getLeastSignificantBits();
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
     private Set<ProductItem> productItems;
 }
