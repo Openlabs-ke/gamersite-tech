@@ -24,7 +24,7 @@ public class ComputerGameController extends ModelConversions<ComputerGame> imple
     private ComputerGameService computerGameService;
 
     @Override
-    @ResponseStatus(code  = HttpStatus.OK)
+    @ResponseStatus(code = HttpStatus.OK)
     @PostMapping(value = "/insert", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GamePayload> insertGame(@RequestBody GamePayload gamePayload) {
         ComputerGame computerGame = super.convertToEntity(gamePayload, ComputerGame.class);
@@ -37,7 +37,7 @@ public class ComputerGameController extends ModelConversions<ComputerGame> imple
     }
 
     @Override
-    @ResponseStatus(code  = HttpStatus.OK)
+    @ResponseStatus(code = HttpStatus.OK)
     @GetMapping(value = "/get/{gameId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GamePayload> getGame(@PathVariable Long gameId) {
         ComputerGame computerGame = computerGameService.retrieveGame(gameId);
@@ -57,21 +57,30 @@ public class ComputerGameController extends ModelConversions<ComputerGame> imple
     }
 
     @Override
-    @ResponseStatus(code  = HttpStatus.OK)
-    @PostMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ComputerGame> updateGame(GamePayload gamePayload) {
-        return null;
+    @ResponseStatus(code = HttpStatus.OK)
+    @PostMapping(value = "/update/{gameId}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<GamePayload> updateGame(@RequestBody GamePayload gamePayload, @PathVariable Long gameId) {
+        ComputerGame computerGame = computerGameService.retrieveGame(gameId);
+
+        ComputerGame gameUpdate = super.convertToEntity(gamePayload, ComputerGame.class);
+        gameUpdate.setId(computerGame.getId());
+
+        computerGame = computerGameService.updateGame(gameUpdate);
+        GamePayload updatedComputerGame = super.convertToPayload(computerGame);
+
+        return ResponseEntity.ok().body(updatedComputerGame);
     }
 
     @Override
-    @ResponseStatus(code  = HttpStatus.OK)
-    @DeleteMapping(value = "/delete")
-    public ResponseEntity<ComputerGame> deleteGame(Long gameId) {
-        return null;
+    @ResponseStatus(code = HttpStatus.OK)
+    @DeleteMapping(value = "/delete/{gameId}")
+    public ResponseEntity<?> deleteGame(@PathVariable Long gameId) {
+        computerGameService.deleteGame(gameId);
+        return ResponseEntity.ok().body(null);
     }
 
     @Override
-    @ResponseStatus(code  = HttpStatus.OK)
+    @ResponseStatus(code = HttpStatus.OK)
     @GetMapping(value = "/get-list", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ComputerGame>> getGameList(String page, String size) {
         return null;
