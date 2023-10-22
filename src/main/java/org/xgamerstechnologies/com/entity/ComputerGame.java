@@ -21,7 +21,7 @@ public class ComputerGame extends Game implements Serializable {
     @Transient
     private static final long serialVersionUID = UUID.randomUUID().getLeastSignificantBits();
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column(name = "game_platform")
     private GamePlatform gamePlatform;
 }
