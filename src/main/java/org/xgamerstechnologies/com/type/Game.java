@@ -19,10 +19,12 @@ public class Game {
     private Long id;
 
     @Column(name = "game_name", unique = true)
-    @Size(min = 3, max = 100)
+    @Size(min = 1, max = 255)
     private String gameName;
 
     @Column(name = "poster_link", unique = true, nullable = false)
+    @Basic
+    @Size(min = 1, max = 510)
     private String posterLink;
 
     @Temporal(TemporalType.DATE)
@@ -31,6 +33,7 @@ public class Game {
 
     @Column(name = "game_description", nullable = false)
     @Basic
+    @Size(min = 1, max = 1000)
     private String gameDescription;
 
     @Column(name = "num_in_stock", nullable = false)
