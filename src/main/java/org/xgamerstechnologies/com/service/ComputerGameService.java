@@ -9,10 +9,11 @@ import org.xgamerstechnologies.com.abstractions.GameUpdation;
 import org.xgamerstechnologies.com.entity.ComputerGame;
 import org.xgamerstechnologies.com.repository.ComputerGameRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ComputerGameService implements GameInsertion<ComputerGame>, GameRetrieval<ComputerGame>, GameUpdation<ComputerGame>, GameDeletion {
+public class ComputerGameService extends GameRetrieval<ComputerGame> implements GameInsertion<ComputerGame>, GameUpdation<ComputerGame>, GameDeletion {
     @Autowired
     private ComputerGameRepository computerGameRepository;
 
@@ -35,5 +36,9 @@ public class ComputerGameService implements GameInsertion<ComputerGame>, GameRet
     @Override
     public ComputerGame updateGame(ComputerGame computerGame) {
         return computerGameRepository.save(computerGame);
+    }
+
+    public List<ComputerGame> getPagedList(int pageNumber, int pageSize) {
+        return super.retrievePagedList(pageNumber, pageSize, ComputerGame.class);
     }
 }

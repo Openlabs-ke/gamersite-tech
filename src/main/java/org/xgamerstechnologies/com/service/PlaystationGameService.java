@@ -9,7 +9,7 @@ import org.xgamerstechnologies.com.abstractions.GameUpdation;
 import org.xgamerstechnologies.com.entity.PlaystationGame;
 
 @Service
-public class PlaystationGameService implements GameInsertion<PlaystationGame>, GameRetrieval<PlaystationGame>, GameUpdation<PlaystationGame>, GameDeletion {
+public class PlaystationGameService extends GameRetrieval<PlaystationGame> implements GameInsertion<PlaystationGame>, GameUpdation<PlaystationGame>, GameDeletion {
     @Override
     public void deleteGame(Long gameId) {
 
