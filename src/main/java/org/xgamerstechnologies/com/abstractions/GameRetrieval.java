@@ -1,5 +1,5 @@
 package org.xgamerstechnologies.com.abstractions;
 
 public interface GameRetrieval<T> {
-    T RetrieveGame();
+    T retrieveGame(Long id);
 }
