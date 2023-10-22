@@ -2,6 +2,6 @@ package org.xgamerstechnologies.com.abstractions.item;
 
 import org.xgamerstechnologies.com.type.Item;
 
-public interface ItemInsertion<T extends Item> {
-    void insertItem(T item);
+public interface ItemDeletion<T extends Item> {
+    void deleteItem(Long id);
 }
