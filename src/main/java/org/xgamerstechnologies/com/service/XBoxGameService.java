@@ -20,7 +20,7 @@ public class XBoxGameService implements GameInsertion<XBoxGame>, GameRetrieval<X
     }
 
     @Override
-    public XBoxGame RetrieveGame() {
+    public XBoxGame retrieveGame(Long id) {
         return null;
     }
 

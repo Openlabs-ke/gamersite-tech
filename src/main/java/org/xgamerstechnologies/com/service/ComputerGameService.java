@@ -9,6 +9,8 @@ import org.xgamerstechnologies.com.abstractions.GameUpdation;
 import org.xgamerstechnologies.com.entity.ComputerGame;
 import org.xgamerstechnologies.com.repository.ComputerGameRepository;
 
+import java.util.Optional;
+
 @Service
 public class ComputerGameService implements GameInsertion<ComputerGame>, GameRetrieval<ComputerGame>, GameUpdation, GameDeletion {
     @Autowired
@@ -25,8 +27,9 @@ public class ComputerGameService implements GameInsertion<ComputerGame>, GameRet
     }
 
     @Override
-    public ComputerGame RetrieveGame() {
-        return null;
+    public ComputerGame retrieveGame(Long id) {
+        Optional<ComputerGame> computerGame = computerGameRepository.findById(id);
+        return computerGame.orElse(null);
     }
 
     @Override

@@ -21,7 +21,7 @@ public class PlaystationGameService implements GameInsertion<PlaystationGame>, G
     }
 
     @Override
-    public PlaystationGame RetrieveGame() {
+    public PlaystationGame retrieveGame(Long id) {
         return null;
     }
 
