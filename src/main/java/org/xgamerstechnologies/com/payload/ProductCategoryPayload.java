@@ -9,5 +9,5 @@ import lombok.*;
 @ToString
 public class ProductCategoryPayload {
     private String itemName;
-    private Integer itemNumber;
+    private Long itemNumber;
 }
