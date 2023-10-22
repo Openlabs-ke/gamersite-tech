@@ -7,16 +7,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.xgamerstechnologies.com.abstractions.item.BaseItemsController;
 import org.xgamerstechnologies.com.abstractions.item.ItemModelConversions;
+import org.xgamerstechnologies.com.abstractions.item.ProductCategoryBaseController;
 import org.xgamerstechnologies.com.entity.ProductCategory;
+import org.xgamerstechnologies.com.payload.ProductCategoryPayload;
 
 @RestController
 @Slf4j
 @RequestMapping(value = "/api/v1/product-category")
-public class ProductCategoryController extends ItemModelConversions<ProductCategory> implements BaseItemsController<ProductCategory> {
+public class ProductCategoryController extends ItemModelConversions<ProductCategory>
+        implements BaseItemsController<ProductCategory>, ProductCategoryBaseController<ProductCategory> {
     @Override
     @ResponseStatus(code = HttpStatus.OK)
     @PostMapping(value = "/insert", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> insertItem() {
+    public ResponseEntity<?> insertItem(@RequestBody ProductCategoryPayload payload) {
+        ProductCategory newCategory = super.convertProductCategoryToEntity(payload, ProductCategory.class);
+        log.info("new category name: {}", newCategory.getItemName());
         return null;
     }
 
