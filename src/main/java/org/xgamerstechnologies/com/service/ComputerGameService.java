@@ -12,13 +12,13 @@ import org.xgamerstechnologies.com.repository.ComputerGameRepository;
 import java.util.Optional;
 
 @Service
-public class ComputerGameService implements GameInsertion<ComputerGame>, GameRetrieval<ComputerGame>, GameUpdation, GameDeletion {
+public class ComputerGameService implements GameInsertion<ComputerGame>, GameRetrieval<ComputerGame>, GameUpdation<ComputerGame>, GameDeletion {
     @Autowired
     private ComputerGameRepository computerGameRepository;
 
     @Override
-    public void deleteGame() {
-
+    public void deleteGame(Long gameId) {
+        computerGameRepository.deleteById(gameId);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ComputerGameService implements GameInsertion<ComputerGame>, GameRet
     }
 
     @Override
-    public void updateGame() {
-
+    public ComputerGame updateGame(ComputerGame computerGame) {
+        return computerGameRepository.save(computerGame);
     }
 }
