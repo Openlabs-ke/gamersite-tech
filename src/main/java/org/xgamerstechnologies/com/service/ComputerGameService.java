@@ -2,10 +2,10 @@ package org.xgamerstechnologies.com.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.xgamerstechnologies.com.abstractions.GameDeletion;
-import org.xgamerstechnologies.com.abstractions.GameInsertion;
-import org.xgamerstechnologies.com.abstractions.GameRetrieval;
-import org.xgamerstechnologies.com.abstractions.GameUpdation;
+import org.xgamerstechnologies.com.abstractions.game.GameDeletion;
+import org.xgamerstechnologies.com.abstractions.game.GameInsertion;
+import org.xgamerstechnologies.com.abstractions.game.GameRetrieval;
+import org.xgamerstechnologies.com.abstractions.game.GameUpdation;
 import org.xgamerstechnologies.com.entity.ComputerGame;
 import org.xgamerstechnologies.com.repository.ComputerGameRepository;
 
