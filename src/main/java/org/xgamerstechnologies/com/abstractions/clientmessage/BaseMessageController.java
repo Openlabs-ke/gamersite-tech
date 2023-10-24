@@ -1,4 +1,4 @@
-package org.xgamerstechnologies.com.abstractions.message;
+package org.xgamerstechnologies.com.abstractions.clientmessage;
 
 import org.springframework.http.ResponseEntity;
 
