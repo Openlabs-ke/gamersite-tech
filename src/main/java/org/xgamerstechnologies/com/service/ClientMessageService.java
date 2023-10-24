@@ -1,10 +1,12 @@
 package org.xgamerstechnologies.com.service;
 
-import org.xgamerstechnologies.com.abstractions.message.MessageDeletion;
-import org.xgamerstechnologies.com.abstractions.message.MessageInsertion;
-import org.xgamerstechnologies.com.abstractions.message.MessageRetrieval;
+import org.springframework.stereotype.Service;
+import org.xgamerstechnologies.com.abstractions.clientmessage.MessageDeletion;
+import org.xgamerstechnologies.com.abstractions.clientmessage.MessageInsertion;
+import org.xgamerstechnologies.com.abstractions.clientmessage.MessageRetrieval;
 import org.xgamerstechnologies.com.entity.ClientMessage;
 
+@Service
 public class ClientMessageService extends MessageRetrieval<ClientMessage>
         implements MessageInsertion<ClientMessage>,  MessageDeletion<ClientMessage> {
     @Override
