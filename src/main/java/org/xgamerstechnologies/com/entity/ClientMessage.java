@@ -15,7 +15,7 @@ import java.util.UUID;
 @ToString
 @Entity
 @Table(name = "client_messages")
-public class ClientMessages implements Serializable {
+public class ClientMessage implements Serializable {
     @Serial
     @Transient
     private static final long serialVersionUID = UUID.randomUUID().getLeastSignificantBits();
