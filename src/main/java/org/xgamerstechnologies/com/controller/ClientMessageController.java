@@ -6,14 +6,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.xgamerstechnologies.com.abstractions.message.BaseMessageController;
+import org.xgamerstechnologies.com.abstractions.clientmessage.BaseMessageController;
+import org.xgamerstechnologies.com.abstractions.clientmessage.MessageModelConversions;
 import org.xgamerstechnologies.com.entity.ClientMessage;
 import org.xgamerstechnologies.com.service.ClientMessageService;
 
 @RestController
 @Slf4j
 @RequestMapping(value = "/api/v1/client-message")
-public class ClientMessageController implements BaseMessageController<ClientMessage> {
+public class ClientMessageController extends MessageModelConversions<ClientMessage> implements BaseMessageController<ClientMessage> {
     @Autowired
     private ClientMessageService clientMessageService;
 
