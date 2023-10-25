@@ -8,11 +8,11 @@ public class MessageModelConversions<ClientMessage> {
     @Autowired
     private ModelMapper modelMapper;
 
-    public ClientMessagePayload convertToPayload(org.xgamerstechnologies.com.entity.ClientMessage message) {
+    public final ClientMessagePayload convertToPayload(org.xgamerstechnologies.com.entity.ClientMessage message) {
         return modelMapper.map(message, ClientMessagePayload.class);
     }
 
-    public ClientMessage convertToEntity(ClientMessagePayload payload, Class<ClientMessage> clazz) {
+    public final ClientMessage convertToEntity(ClientMessagePayload payload, Class<ClientMessage> clazz) {
         return modelMapper.map(payload, clazz);
     }
 }
