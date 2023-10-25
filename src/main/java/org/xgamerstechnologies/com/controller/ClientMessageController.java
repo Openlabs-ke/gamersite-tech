@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.xgamerstechnologies.com.abstractions.clientmessage.BaseMessageController;
 import org.xgamerstechnologies.com.abstractions.clientmessage.MessageModelConversions;
 import org.xgamerstechnologies.com.entity.ClientMessage;
@@ -35,7 +36,14 @@ public class ClientMessageController extends MessageModelConversions<ClientMessa
     @ResponseStatus(code = HttpStatus.OK)
     @GetMapping(value = "/get/{messageId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getMessage(Long messageId) {
-        return null;
+        ClientMessage existingMessage = clientMessageService.retrieveMessage(messageId);
+
+        if(existingMessage == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Message not found");
+        }
+
+        ClientMessagePayload responsePayload = super.convertToPayload(existingMessage);
+        return ResponseEntity.ok().body(responsePayload);
     }
 
     @Override
