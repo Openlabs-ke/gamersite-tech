@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.xgamerstechnologies.com.abstractions.clientmessage.BaseMessageController;
 import org.xgamerstechnologies.com.abstractions.clientmessage.MessageModelConversions;
 import org.xgamerstechnologies.com.entity.ClientMessage;
+import org.xgamerstechnologies.com.payload.ClientMessagePayload;
 import org.xgamerstechnologies.com.service.ClientMessageService;
 
 @RestController
@@ -21,8 +22,13 @@ public class ClientMessageController extends MessageModelConversions<ClientMessa
     @Override
     @ResponseStatus(code = HttpStatus.OK)
     @PostMapping(value = "/insert", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> insertNewMessage() {
-        return null;
+    public ResponseEntity<ClientMessagePayload> insertNewMessage(ClientMessagePayload payload) {
+        ClientMessage message = super.convertToEntity(payload, ClientMessage.class);
+
+        message = clientMessageService.insertNewMessage(message);
+
+        ClientMessagePayload responsePayload = super.convertToPayload(message);
+        return ResponseEntity.ok().body(responsePayload);
     }
 
     @Override
