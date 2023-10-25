@@ -13,6 +13,8 @@ import org.xgamerstechnologies.com.entity.ClientMessage;
 import org.xgamerstechnologies.com.payload.ClientMessagePayload;
 import org.xgamerstechnologies.com.service.ClientMessageService;
 
+import java.util.List;
+
 @RestController
 @Slf4j
 @RequestMapping(value = "/api/v1/client-message")
@@ -52,13 +54,19 @@ public class ClientMessageController extends MessageModelConversions<ClientMessa
     public ResponseEntity<?> getMessageList(
             @RequestParam(defaultValue = "0") String page,
             @RequestParam(required = false, defaultValue = "10") String size) {
-        return null;
+        int pageNumber = Integer.parseInt(page);
+        int pageSize = Integer.parseInt(size);
+
+        List<ClientMessage> clientMessageList = clientMessageService.getPagedList(pageNumber, pageSize);
+        List<ClientMessagePayload> payload = clientMessageList.stream().map(super::convertToPayload).toList();
+        return ResponseEntity.ok().body(payload);
     }
 
     @Override
     @ResponseStatus(code = HttpStatus.OK)
     @DeleteMapping(value = "/delete/{messageId}")
     public ResponseEntity<?> deleteMessage(Long messageId) {
-        return null;
+        clientMessageService.deleteMessage(messageId);
+        return ResponseEntity.ok().body(null);
     }
 }
