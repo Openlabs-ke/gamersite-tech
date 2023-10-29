@@ -16,7 +16,7 @@ public abstract class ItemModelConversions<T extends Item> {
     @Autowired
     private ProductItemService productItemService;
 
-    public ProductCategoryPayload convertProductCategoryToPayload(ProductCategory productCategory) {
+    public final ProductCategoryPayload convertProductCategoryToPayload(ProductCategory productCategory) {
         Long itemCount = productItemService.countProductsInCategory(productCategory);
 
         ProductCategoryPayload payload =  modelMapper.map(productCategory, ProductCategoryPayload.class);
@@ -25,15 +25,15 @@ public abstract class ItemModelConversions<T extends Item> {
         return payload;
     }
 
-    public T convertProductCategoryToEntity(ProductCategoryPayload productCategoryPayload, Class<T> clazz) {
+    public final T convertProductCategoryToEntity(ProductCategoryPayload productCategoryPayload, Class<T> clazz) {
         return modelMapper.map(productCategoryPayload, clazz);
     }
 
-    public T convertProductItemToEntity(ProductItemPayload productItemPayload, Class<T> clazz) {
+    public final T convertProductItemToEntity(ProductItemPayload productItemPayload, Class<T> clazz) {
         return modelMapper.map(productItemPayload, clazz);
     }
 
-    public ProductItemPayload convertProductItemToPayload(ProductItem productItem) {
+    public final ProductItemPayload convertProductItemToPayload(ProductItem productItem) {
         return modelMapper.map(productItem, ProductItemPayload.class);
     }
 }
