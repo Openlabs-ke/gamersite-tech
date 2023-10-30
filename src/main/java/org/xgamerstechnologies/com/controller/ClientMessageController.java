@@ -25,8 +25,9 @@ public class ClientMessageController extends MessageModelConversions<ClientMessa
     @Override
     @ResponseStatus(code = HttpStatus.OK)
     @PostMapping(value = "/insert", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ClientMessagePayload> insertNewMessage(ClientMessagePayload payload) {
+    public ResponseEntity<ClientMessagePayload> insertNewMessage(@RequestBody ClientMessagePayload payload) {
         ClientMessage message = super.convertToEntity(payload, ClientMessage.class);
+        log.info("client message {}", message.toString());
 
         message = clientMessageService.insertNewMessage(message);
 
@@ -37,7 +38,7 @@ public class ClientMessageController extends MessageModelConversions<ClientMessa
     @Override
     @ResponseStatus(code = HttpStatus.OK)
     @GetMapping(value = "/get/{messageId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getMessage(Long messageId) {
+    public ResponseEntity<?> getMessage(@PathVariable Long messageId) {
         ClientMessage existingMessage = clientMessageService.retrieveMessage(messageId);
 
         if(existingMessage == null) {
@@ -65,7 +66,7 @@ public class ClientMessageController extends MessageModelConversions<ClientMessa
     @Override
     @ResponseStatus(code = HttpStatus.OK)
     @DeleteMapping(value = "/delete/{messageId}")
-    public ResponseEntity<?> deleteMessage(Long messageId) {
+    public ResponseEntity<?> deleteMessage(@PathVariable Long messageId) {
         clientMessageService.deleteMessage(messageId);
         return ResponseEntity.ok().body(null);
     }

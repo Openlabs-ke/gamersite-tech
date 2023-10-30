@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class ClientMessagePayload {
     private String messageSubject;
-    private Long phoneNumber;
+    private String phoneNumber;
     private String emailAddress;
     private String message;
 }

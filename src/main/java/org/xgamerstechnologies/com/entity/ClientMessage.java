@@ -30,8 +30,8 @@ public class ClientMessage implements Serializable {
     private String messageSubject;
 
     @Column(name = "phone_number", nullable = false)
-    @Size(min = 1, max = 10)
-    private Long phoneNumber;
+    @Size(min = 1, max = 12)
+    private String phoneNumber;
 
     @Column(name = "email_address")
     @Basic
